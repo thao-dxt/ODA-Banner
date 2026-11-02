@@ -1,0 +1,85 @@
+{
+  "v": 1,
+  "mode": "omelette",
+  "root": "project/",
+  "title": "Animation reveal input box",
+  "entry": "ODA Website Banner.dc.html",
+  "pages": [
+    {
+      "path": "ODA Website Banner.dc.html",
+      "title": "ODA Website Banner",
+      "kind": "page"
+    },
+    {
+      "path": "ODA Website Banner.html",
+      "title": "Bundled Page",
+      "kind": "plain"
+    },
+    {
+      "path": "ODA Website Banner -standalone src-.dc.html",
+      "title": "ODA Website Banner -standalone src-",
+      "kind": "page"
+    },
+    {
+      "path": "ODA Cancer Discovery.dc.html",
+      "title": "ODA Cancer Discovery",
+      "kind": "page"
+    },
+    {
+      "path": "ODA Biomarker Discovery.dc.html",
+      "title": "ODA Biomarker Discovery",
+      "kind": "page"
+    },
+    {
+      "path": "ODA Agent Workflow.dc.html",
+      "title": "ODA Agent Workflow",
+      "kind": "page"
+    }
+  ],
+  "migratorVersion": "artifact-migrator (claude-design-backend a595f3769f57)",
+  "createdAt": "2026-11-02T05:09:55.662Z",
+  "source": {
+    "v": 1,
+    "app": "claude-design",
+    "url": "https://claude.ai/design/p/8bf5d2e4-aa66-4361-bffc-7b48c09c75f5",
+    "projectId": "8bf5d2e4-aa66-4361-bffc-7b48c09c75f5",
+    "exportedAt": "2026-11-02T05:09:55.662Z"
+  },
+  "report": {
+    "itemsVersion": 2,
+    "pages": {
+      "total": 6,
+      "ok": 6,
+      "partial": 0,
+      "notMigrated": 0
+    },
+    "items": [
+      {
+        "kind": "needs_capability",
+        "path": "animations-v3.jsx",
+        "text": "an animation stage — plays, but video export is not available in a canvas (via “ODA Agent Workflow.dc.html”, “ODA Biomarker Discovery.dc.html”, “ODA Cancer Discovery.dc.html”)",
+        "capability": "video_export"
+      },
+      {
+        "kind": "needs_capability",
+        "path": "oda-animation.jsx",
+        "text": "an animation stage — plays, but video export is not available in a canvas (via “ODA Agent Workflow.dc.html”)",
+        "capability": "video_export"
+      },
+      {
+        "kind": "needs_capability",
+        "path": "oda-bd-animation.jsx",
+        "text": "an animation stage — plays, but video export is not available in a canvas (via “ODA Biomarker Discovery.dc.html”)",
+        "capability": "video_export"
+      },
+      {
+        "kind": "needs_capability",
+        "path": "oda-cd-animation.jsx",
+        "text": "an animation stage — plays, but video export is not available in a canvas (via “ODA Cancer Discovery.dc.html”)",
+        "capability": "video_export"
+      }
+    ],
+    "truncated": 0,
+    "truncatedLeftOut": 0
+  }
+}

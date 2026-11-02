@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<meta name="ext-resource-dependency" content="videos/treatment-response.mp4" data-resource-id="vidTR">
+<meta name="ext-resource-dependency" content="videos/cohort-discovery.mp4" data-resource-id="vidCD">
+<meta name="ext-resource-dependency" content="videos/biomarker-discovery.mp4" data-resource-id="vidBD">
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#121249"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect x="360" y="250" width="480" height="300" rx="36" fill="#fff"/><path d="M570 340 L570 460 L670 400 Z" fill="#FF2C94"/><rect x="360" y="590" width="150" height="14" rx="7" fill="#18ADF1"/><rect x="525" y="590" width="150" height="14" rx="7" fill="#FF2C94"/><rect x="690" y="590" width="150" height="14" rx="7" fill="#61BA00"/></svg></template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<style>html, body { margin: 0; height: 100%; background: #fff; } a { color: #18ADF1; } a:hover { color: #121249; }</style>
+</helmet>
+<div ref="{{ rootRef }}" style="position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #fff; overflow: hidden; font-family: 'Figtree', system-ui, sans-serif;">
+  <div style="position: relative; width: {{ boxW }}px; height: {{ boxH }}px; flex: none;">
+    <div ref="{{ stageRef }}" style="position: absolute; left: 0; top: 0; width: 1196px; height: 577px; transform-origin: 0 0; transform: scale({{ scale }}); user-select: none;">
+      <img src="assets/banner-tr.svg" alt="" style="position: absolute; inset: 0; width: 1196px; height: 577px; opacity: {{ op0 }}; transition: opacity 450ms ease;">
+      <img src="assets/banner-cd.svg" alt="" style="position: absolute; inset: 0; width: 1196px; height: 577px; opacity: {{ op1 }}; transition: opacity 450ms ease;">
+      <img src="assets/banner-bd.svg" alt="" style="position: absolute; inset: 0; width: 1196px; height: 577px; opacity: {{ op2 }}; transition: opacity 450ms ease;">
+      <img src="assets/nav.png" alt="DNAnexus navigation" style="position: absolute; left: 0; top: 0; width: 1196px; height: 69px;">
+
+      <div style="position: absolute; left: 451px; top: 84px; width: 729px; height: 478px; border-radius: 20px; overflow: hidden; background: {{ videoBg }}; transition: background 450ms ease;">
+        <video ref="{{ vref0 }}" src="videos/treatment-response.mp4" playsinline="" preload="auto" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: {{ vo0 }}; visibility: {{ vv0 }}; transition: opacity 450ms ease;"></video>
+        <video ref="{{ vref1 }}" src="videos/cohort-discovery.mp4" playsinline="" preload="auto" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: {{ vo1 }}; visibility: {{ vv1 }}; transition: opacity 450ms ease;"></video>
+        <video ref="{{ vref2 }}" src="videos/biomarker-discovery.mp4" playsinline="" preload="auto" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: {{ vo2 }}; visibility: {{ vv2 }}; transition: opacity 450ms ease;"></video>
+        <sc-if value="{{ missing }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; left: 0; right: 0; top: 200px; display: flex; flex-direction: column; align-items: center; gap: 6px; color: #5E5EA8; font-size: 13px; text-align: center;">
+            <div style="font-weight: 700; letter-spacing: 0.04em;">VIDEO NOT FOUND</div>
+            <div style="color: #121249;">{{ missingPath }}</div>
+          </div>
+        </sc-if>
+      </div>
+
+      <img src="assets/pills-tr.svg" alt="" style="position: absolute; inset: 0; width: 1196px; height: 577px; opacity: {{ op0 }}; transition: opacity 450ms ease; pointer-events: none;">
+      <img src="assets/pills-cd.svg" alt="" style="position: absolute; inset: 0; width: 1196px; height: 577px; opacity: {{ op1 }}; transition: opacity 450ms ease; pointer-events: none;">
+      <img src="assets/pills-bd.svg" alt="" style="position: absolute; inset: 0; width: 1196px; height: 577px; opacity: {{ op2 }}; transition: opacity 450ms ease; pointer-events: none;">
+      <div onClick="{{ onPauseClick }}" style="position: absolute; left: 467px; top: 532px; width: 20px; height: 20px; border-radius: 6px; background: #fff; cursor: pointer; transform: scale({{ btnScale }});">
+        <sc-if value="{{ playing }}" hint-placeholder-val="{{ true }}">
+          <svg width="20" height="20" viewBox="467 532 20 20" style="position: absolute; inset: 0; display: block;"><path d="M474.5 539L474.5 545" stroke="#121249" stroke-width="3" stroke-linecap="round"></path><path d="M479.5 539L479.5 545" stroke="#121249" stroke-width="3" stroke-linecap="round"></path></svg>
+        </sc-if>
+        <sc-if value="{{ paused }}" hint-placeholder-val="{{ false }}">
+          <svg width="20" height="20" viewBox="467 532 20 20" style="position: absolute; inset: 0; display: block;"><path d="M479.5 541.134C480.167 541.519 480.167 542.481 479.5 542.866L476.5 544.598C475.833 544.983 475 544.502 475 543.732L475 540.268C475 539.498 475.833 539.017 476.5 539.402L479.5 541.134Z" fill="#121249"></path></svg>
+        </sc-if>
+      </div>
+
+      <div style="position: absolute; left: 497px; top: 540px; width: 222.333px; height: 4px; background: #18ADF1; opacity: 0.2;"></div>
+      <div style="position: absolute; left: 719.333px; top: 540px; width: 222.333px; height: 4px; background: #FF2C94; opacity: 0.2;"></div>
+      <div style="position: absolute; left: 941.667px; top: 540px; width: 222.333px; height: 4px; background: #61BA00; opacity: 0.2;"></div>
+      <div style="position: absolute; left: 497px; top: 540px; width: {{ fw0 }}px; height: 4px; background: #18ADF1;"></div>
+      <div style="position: absolute; left: 719.333px; top: 540px; width: {{ fw1 }}px; height: 4px; background: #FF2C94;"></div>
+      <div style="position: absolute; left: 941.667px; top: 540px; width: {{ fw2 }}px; height: 4px; background: #61BA00;"></div>
+      <svg width="6" height="24" viewBox="570 530 6 24" style="position: absolute; left: {{ headL }}px; top: 530px; display: block; pointer-events: none;"><path d="M573.5 535L575.887 530L570.113 530L572.5 535L573.5 535ZM573 534.5L572.5 534.5L572.5 554L573 554L573.5 554L573.5 534.5L573 534.5Z" fill="#121249"></path></svg>
+      <div onPointerDown="{{ onTrackDown }}" style="position: absolute; left: 497px; top: 530px; width: 667px; height: 24px; cursor: pointer; touch-action: none;"></div>
+
+      <div onClick="{{ onTab0 }}" style="position: absolute; left: 497px; top: 499px; width: 151px; height: 25px; border-radius: 12.5px; cursor: pointer;"></div>
+      <div onClick="{{ onTab1 }}" style="position: absolute; left: 719.333px; top: 499px; width: 131px; height: 25px; border-radius: 12.5px; cursor: pointer;"></div>
+      <div onClick="{{ onTab2 }}" style="position: absolute; left: 941.667px; top: 499px; width: 150px; height: 25px; border-radius: 12.5px; cursor: pointer;"></div>
+      <div onClick="{{ onPrev }}" style="position: absolute; left: 52px; top: 516px; width: 30px; height: 28px; cursor: pointer;"></div>
+      <div onClick="{{ onNext }}" style="position: absolute; left: 356px; top: 516px; width: 30px; height: 28px; cursor: pointer;"></div>
+
+      <div style="position: absolute; left: {{ ripX }}px; top: {{ ripY }}px; width: 28px; height: 28px; margin: -14px 0 0 -14px; border-radius: 50%; border: 1.5px solid #121249; box-sizing: border-box; opacity: {{ ripO }}; transform: scale({{ ripS }}); pointer-events: none;"></div>
+      <svg width="14" height="20" viewBox="-1 -1 14 20" style="position: absolute; left: {{ curX }}px; top: {{ curY }}px; margin: -1px 0 0 -1px; opacity: {{ curO }}; transform: scale({{ curS }}); transform-origin: 1px 1px; overflow: visible; filter: drop-shadow(0 1px 2px rgba(18,18,73,0.3)); pointer-events: none;"><path d="M0 0L0 15.2L3.7 11.7L6.2 17.4L8.5 16.4L6.1 10.9L11 10.9Z" fill="#121249" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"></path></svg>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;speed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:2.5,&quot;min&quot;:1,&quot;max&quot;:2.5,&quot;step&quot;:0.25,&quot;unit&quot;:&quot;×&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Playback&quot;},&quot;demoCursor&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Demo&quot;},&quot;interaction&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;every tab&quot;,&quot;first tab only&quot;],&quot;default&quot;:&quot;every tab&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Demo&quot;},&quot;autoAdvance&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Demo&quot;}}">
+const TABS = [
+  { src: (window.__resources||{}).vidTR || 'videos/treatment-response.mp4', d: 37.6, x: 497, bg: '#EAF7FE' },
+  { src: (window.__resources||{}).vidCD || 'videos/cohort-discovery.mp4', d: 45.85, x: 719.333, bg: '#FFF0F7' },
+  { src: (window.__resources||{}).vidBD || 'videos/biomarker-discovery.mp4', d: 17.35, x: 941.667, bg: '#F0FAE0' },
+];
+const SEG = 222.333, PAUSE = { x: 477, y: 542 }, ENTER = { x: 1010, y: 440 }, EXIT = { x: 1050, y: 470 };
+const ease = (a) => a < 0.5 ? 4 * a * a * a : 1 - Math.pow(-2 * a + 2, 3) / 2;
+const lerp = (a, b, p) => a + (b - a) * p;
+const seg = (k, a, b) => Math.max(0, Math.min(1, (k - a) / (b - a)));
+
+class Component extends DCLogic {
+  state = { tab: 0, t: 0, playing: true, scale: 1, ready: [false, false, false], failed: [false, false, false], cur: { x: ENTER.x, y: ENTER.y, o: 0, down: 0 }, rip: null, now: 0 };
+  vids = [];
+  root = null;
+  stage = null;
+  tm = 0;
+  playingNow = true;
+  dragging = false;
+  userCtl = false;
+
+  rootRef = (el) => { if (el && el !== this.root) { this.root = el; if (this.ro) this.ro.observe(el); this.fit(); } };
+  stageRef = (el) => { if (el) this.stage = el; };
+  vrefs = [0, 1, 2].map(i => (el) => { if (el) this.vids[i] = el; });
+  componentDidMount() {
+    this.ro = new ResizeObserver(() => this.fit());
+    if (this.root) this.ro.observe(this.root);
+    this.onResize = () => this.fit();
+    window.addEventListener('resize', this.onResize);
+    this.fit(); requestAnimationFrame(() => this.fit()); setTimeout(() => this.fit(), 300);
+    this.vids.forEach((v, i) => {
+      if (!v) return;
+      v.muted = true; v.defaultMuted = true; v.playsInline = true;
+      v.addEventListener('loadedmetadata', () => this.onMeta(i));
+      v.addEventListener('error', () => this.onErr(i));
+      if (v.error) this.onErr(i); else if (v.readyState >= 1) this.onMeta(i);
+    });
+    this.last = performance.now();
+    const loop = (now) => { this.raf = requestAnimationFrame(loop); this.tick(now); };
+    this.raf = requestAnimationFrame(loop);
+    this.goTab(0);
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf);
+    if (this.ro) this.ro.disconnect();
+    window.removeEventListener('resize', this.onResize);
+    this.vids.forEach(v => v && v.pause());
+    window.removeEventListener('pointermove', this.onMove);
+    window.removeEventListener('pointerup', this.onUp);
+  }
+  fit() {
+    if (!this.root) return;
+    const r = this.root.getBoundingClientRect();
+    const s = Math.min((r.width || window.innerWidth) / 1196, (r.height || window.innerHeight) / 577);
+    if (s > 0 && Math.abs(s - this.state.scale) > 0.0005) this.setState({ scale: s });
+  }
+  live(i = this.state.tab) { return !!(this.vids[i] && this.state.ready[i]); }
+  dur(i = this.state.tab) { const v = this.vids[i]; return this.live(i) && isFinite(v.duration) && v.duration > 0 ? v.duration : TABS[i].d; }
+  time() { return this.live() ? this.vids[this.state.tab].currentTime : this.tm; }
+  seek(t) {
+    t = Math.max(0, Math.min(this.dur() - 0.05, t));
+    this.tm = t;
+    if (this.live()) this.vids[this.state.tab].currentTime = t;
+  }
+  media(play) {
+    const v = this.vids[this.state.tab];
+    if (!this.live()) return;
+    v.playbackRate = this.rate();
+    if (play) v.play().catch(() => {}); else v.pause();
+  }
+  setPlaying(p) { this.playingNow = p; this.media(p); this.setState({ playing: p }); }
+  goTab(i) {
+    this.vids.forEach((v, j) => { if (v) { v.pause(); if (j !== i) { try { v.currentTime = 0; } catch (e) {} } } });
+    this.tm = 0; this.script = null; this.demoDone = false; this.dragging = false;
+    this.setState({ tab: i, cur: { ...this.state.cur, o: 0 }, rip: null }, () => { this.seek(0); this.setPlaying(true); });
+  }
+  takeControl() {
+    this.userCtl = true;
+    if (this.script && this.script.grab && !this.script.released) { this.dragging = false; this.media(this.playingNow); }
+    this.script = null;
+    this.setState({ cur: { ...this.state.cur, o: 0 } });
+  }
+  demoOn() {
+    if (this.userCtl || !(this.props.demoCursor ?? true)) return false;
+    return (this.props.interaction ?? 'every tab') === 'every tab' || this.state.tab === 0;
+  }
+  headX(t, D) { return TABS[this.state.tab].x + SEG * Math.max(0, Math.min(1, t / D)); }
+
+  tick(now) {
+    const dt = Math.min(0.1, (now - this.last) / 1000); this.last = now;
+    const i = this.state.tab, D = this.dur();
+    if (this.playingNow && !this.dragging && !this.live()) this.tm += dt * this.rate();
+    const lv = this.vids[i];
+    if (this.live() && lv.playbackRate !== this.rate()) lv.playbackRate = this.rate();
+    const t = this.time();
+    if (t >= D - 0.04 && !this.dragging && this.playingNow && (this.props.autoAdvance ?? true)) { this.goTab((i + 1) % TABS.length); return; }
+    if (this.demoOn() && !this.demoDone && !this.script && t >= Math.max(5, D * 0.3)) this.script = { s: now / 1000 };
+    let cur = this.state.cur;
+    if (this.script) cur = this.run(now / 1000 - this.script.s, D, now / 1000);
+    this.setState({ t: this.time(), cur, now: now / 1000 });
+  }
+
+  click(p, nowS) { this.setState({ rip: { x: p.x, y: p.y, s: nowS } }); }
+
+  run(k, D, nowS) {
+    const S = this.script;
+    if (k < 0.9) {
+      const p = ease(seg(k, 0, 0.9));
+      return { x: lerp(ENTER.x, PAUSE.x, p), y: lerp(ENTER.y, PAUSE.y, p) - Math.sin(p * Math.PI) * 30, o: Math.min(1, k / 0.25), down: 0 };
+    }
+    if (!S.c1) { S.c1 = true; this.setPlaying(false); this.click(PAUSE, nowS); }
+    if (k < 2.6) return { x: PAUSE.x, y: PAUSE.y, o: 1, down: k < 1.05 ? 1 : 0 };
+    if (!S.c2) { S.c2 = true; this.setPlaying(true); this.click(PAUSE, nowS); }
+    if (k < 3.3) return { x: PAUSE.x, y: PAUSE.y, o: 1, down: k < 2.75 ? 1 : 0 };
+    if (!S.m) S.m = { hx: this.headX(this.time() + 0.8, D) };
+    if (k < 4.1) {
+      const p = ease(seg(k, 3.3, 4.1));
+      return { x: lerp(PAUSE.x, S.m.hx, p), y: 542 - Math.sin(p * Math.PI) * 14, o: 1, down: 0 };
+    }
+    if (!S.grab) {
+      const t0 = this.time();
+      S.grab = { t0, t1: Math.min(D * 0.85, t0 + D * 0.18) };
+      this.dragging = true; this.media(false);
+    }
+    if (k < 5.4) {
+      const tt = lerp(S.grab.t0, S.grab.t1, ease(seg(k, 4.2, 5.4)));
+      this.seek(tt);
+      return { x: this.headX(tt, D), y: 542, o: 1, down: 1 };
+    }
+    if (!S.released) { S.released = true; this.dragging = false; this.media(this.playingNow); S.rx = this.headX(this.time(), D); }
+    if (k < 6.6) {
+      const p = ease(seg(k, 5.5, 6.6));
+      return { x: lerp(S.rx, EXIT.x, p), y: lerp(542, EXIT.y, p), o: 1 - seg(k, 6.2, 6.6), down: k < 5.55 ? 1 : 0 };
+    }
+    this.script = null; this.demoDone = true;
+    return { x: EXIT.x, y: EXIT.y, o: 0, down: 0 };
+  }
+
+  toLocal(e) { const r = this.stage.getBoundingClientRect(); return (e.clientX - r.left) / this.state.scale; }
+  scrubTo(x) {
+    let j = Math.max(0, Math.min(TABS.length - 1, Math.floor((x - 497) / SEG)));
+    if (j !== this.state.tab) { this.goTab(j); }
+    const D = this.dur(j);
+    const p = Math.max(0, Math.min(1, (x - TABS[j].x) / SEG));
+    this.seek(p * D);
+  }
+  onMove = (e) => { if (this.userDrag) this.scrubTo(this.toLocal(e)); };
+  onUp = () => {
+    if (!this.userDrag) return;
+    this.userDrag = false; this.dragging = false; this.media(this.playingNow);
+    window.removeEventListener('pointermove', this.onMove);
+    window.removeEventListener('pointerup', this.onUp);
+  };
+
+  rate() { return Math.max(0.5, Math.min(3, +(this.props.speed ?? 1.5) || 1.5)); }
+  onMeta(i) {
+    if (this.vids[i]) this.vids[i].playbackRate = this.rate();
+    const ready = this.state.ready.slice(); ready[i] = true;
+    const failed = this.state.failed.slice(); failed[i] = false;
+    this.setState({ ready, failed }, () => {
+      if (i === this.state.tab) { const v = this.vids[i]; v.currentTime = Math.min(this.tm, v.duration - 0.05); if (this.playingNow && !this.dragging) v.play().catch(() => {}); }
+    });
+  }
+  retries = [0, 0, 0];
+  onErr(i) {
+    const v = this.vids[i];
+    if (v && this.retries[i] < 3) {
+      this.retries[i]++;
+      setTimeout(() => { v.src = TABS[i].src.startsWith('blob:') ? TABS[i].src : TABS[i].src + '?r=' + Date.now(); v.load(); }, 400 * this.retries[i]);
+      return;
+    }
+    const failed = this.state.failed.slice(); failed[i] = true; this.setState({ failed });
+  }
+
+  renderVals() {
+    const { tab, scale, cur, rip, now } = this.state;
+    const D = this.dur(), t = this.state.t, w = SEG * Math.max(0, Math.min(1, t / D));
+    const rp = rip ? Math.min(1, (now - rip.s) / 0.5) : 1;
+    const pressing = cur.o > 0 && cur.down && Math.abs(cur.x - PAUSE.x) < 2 && Math.abs(cur.y - PAUSE.y) < 2;
+    const vals = {
+      rootRef: this.rootRef,
+      stageRef: this.stageRef,
+      scale, boxW: 1196 * scale, boxH: 577 * scale,
+      op0: tab === 0 ? 1 : 0, op1: tab === 1 ? 1 : 0, op2: tab === 2 ? 1 : 0,
+      videoBg: TABS[tab].bg,
+      missing: this.state.failed[tab], missingPath: TABS[tab].src,
+      playing: this.state.playing, paused: !this.state.playing,
+      btnScale: pressing ? 0.88 : 1,
+      fw0: tab === 0 ? w : 0, fw1: tab === 1 ? w : 0, fw2: tab === 2 ? w : 0,
+      headL: TABS[tab].x + w - 3,
+      curX: cur.x, curY: cur.y, curO: cur.o, curS: cur.down ? 0.88 : 1,
+      ripX: rip ? rip.x : 0, ripY: rip ? rip.y : 0, ripO: rip ? 0.5 * (1 - rp) : 0, ripS: 0.4 + 0.8 * ease(rp),
+      onPauseClick: () => { this.takeControl(); this.setPlaying(!this.playingNow); },
+      onTrackDown: (e) => {
+        e.preventDefault(); this.takeControl();
+        this.userDrag = true; this.dragging = true; this.media(false);
+        this.scrubTo(this.toLocal(e));
+        window.addEventListener('pointermove', this.onMove);
+        window.addEventListener('pointerup', this.onUp);
+      },
+      onTab0: () => { this.takeControl(); this.goTab(0); },
+      onTab1: () => { this.takeControl(); this.goTab(1); },
+      onTab2: () => { this.takeControl(); this.goTab(2); },
+      onPrev: () => { this.takeControl(); this.goTab((tab + 2) % 3); },
+      onNext: () => { this.takeControl(); this.goTab((tab + 1) % 3); },
+    };
+    [0, 1, 2].forEach(i => {
+      vals['vref' + i] = this.vrefs[i];
+      const ok = !this.state.failed[i];
+      vals['vo' + i] = ok && tab === i ? 1 : 0;
+      vals['vv' + i] = ok ? 'visible' : 'hidden';
+    });
+    return vals;
+  }
+}
+</script>
+</body>
+</html>

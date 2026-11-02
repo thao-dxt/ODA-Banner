@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>window.OM_SCENES = '[{"name":"Input","dur":5.5,"desc":"Label, input expands, accent line and arrow reveal, request 1 is typed","nat":4.75},{"name":"Submit","dur":1.6,"desc":"Soft press; request becomes a bubble; loader starts"},{"name":"Processing","dur":2.6,"desc":"Agent card and tool-call steps reveal"},{"name":"Result","dur":6.6,"desc":"Feed shifts up; patient population card and buttons reveal, each button highlights in turn, cohort bar settles"},{"name":"Input 2","dur":7.7,"desc":"Exchange 1 is pushed up; request 2 is typed","nat":5.85},{"name":"Submit 2","dur":1.6,"desc":"Soft press; bubble; loader"},{"name":"Table","dur":4.4,"desc":"KRAS mutations table reveals row by row","nat":2.8},{"name":"Observations","dur":4.5,"desc":"Card grows; key observations reveal"},{"name":"Input 3","dur":8.5,"desc":"Exchange 2 is pushed up; request 3 is typed","nat":6.05},{"name":"Submit 3","dur":1.6,"desc":"Soft press; bubble; loader"},{"name":"Chart","dur":4.4,"desc":"Bar chart card reveals; bars grow; summary bar settles","nat":3},{"name":"Settle","dur":5,"desc":"Final frame holds"},{"name":"Outro","dur":1.5,"desc":"Everything fades out"}]';</script>
+<script>window.OM_PLAYBACK = '{"mode":"times","count":1}';</script>
+<script>window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "motionEditor": true,
+  "caret": "inline",
+  "corner": "#FFFFFF"
+}/*EDITMODE-END*/;</script>
+<style>html, body { margin: 0; height: 100%; background: #0a0a0a; } a { color: #18ADF1; } a:hover { color: #121249; }</style>
+</helmet>
+<div style="position: fixed; inset: 0;">
+  <x-import component-from-global-scope="ODACDAnimation" from="./animations-v3.jsx ./tweaks-panel.jsx ./oda-cd-animation.jsx?v=1791754996756" hint-size="100%,100%"></x-import>
+</div>
+</x-dc>
+</body>
+</html>
